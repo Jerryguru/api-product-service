@@ -1,18 +1,30 @@
 package com.ar.product.service.entity;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+//import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 @Entity
 @Table(name="products")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // it will gives the auto increment
+
     private Long id;
 
     @Column(nullable = false) // here it should not be null mush and should be value.
-    private String ProductName;
+    private String productName;
 
     @Column(length = 1000)
     private String description;
@@ -30,9 +42,20 @@ public class Product {
     private String sku;
 
     private Boolean status;
+@CreatedDate
+    private LocalDateTime createdDate;
+@LastModifiedDate
+    private  LocalDateTime updatedDate;
 
-    private LocalDateTime CreatedDate;
+    public void setCreatedDate(LocalDateTime now) {
+    }
 
-    private  LocalDateTime UpdatedDate;
-
+    public void setUpdatedDate(LocalDateTime now) {
+    }
 }
+
+
+
+
+
+//spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
