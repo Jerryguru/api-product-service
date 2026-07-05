@@ -7,12 +7,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 //import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 @Entity
 @Table(name="products")
+@EntityListeners(AuditingEntityListener.class)
 @Getter
 @Setter
 @AllArgsConstructor
@@ -47,11 +49,8 @@ public class Product {
 @LastModifiedDate
     private  LocalDateTime updatedDate;
 
-    public void setCreatedDate(LocalDateTime now) {
-    }
 
-    public void setUpdatedDate(LocalDateTime now) {
-    }
+
 }
 
 
