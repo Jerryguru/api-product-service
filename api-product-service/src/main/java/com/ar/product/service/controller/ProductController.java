@@ -68,14 +68,21 @@ public class ProductController {
     }
 
     // Now if we want to search by Name This is the proces now
-    @GetMapping("/name/{productName}")
+   /* @GetMapping("/name/{productName}")
     public  ResponseEntity<List<Product>>
                                     getAllProductByProductName(@PathVariable String productName){
        List<Product> products= productService.getAllProductByProductName(productName);
         return new ResponseEntity<>(products , HttpStatus.OK);
+    }*/
 
-
-
+    @GetMapping("/name")
+    public  ResponseEntity<List<Product>>
+                                    getAllProductByProductName(
+                                            @RequestParam("productName") String productName,
+                                            @RequestParam("category") String category)
+    {
+        List<Product> products= productService.getAllProductByProductName(productName,category);
+        return new ResponseEntity<>(products , HttpStatus.OK);
     }
 
 
